@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    container_name: proctor-backend
+    ports:
+      - "8001:8000"
+    environment:
+      - MONGODB_URL=mongodb://mongo:27017
+      - DATABASE_NAME=proctor_db
+      - ALLOWED_ORIGINS=http://localhost:3000
+    depends_on:
+      - mongo
+    networks:
+      - proctor-network
+    volumes:
+      - ./backend/app:/app/app
+
+  frontend:
+    build: ./frontend
+    container_name: proctor-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8001/api
+      - MONGODB_URI=mongodb://mongo:27017/proctor_db # Direct mongo access for Next.js API routes if needed, though backend is preferred for logic
+    depends_on:
+      - backend
+    networks:
+      - proctor-network
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+
+  mongo:
+    image: mongo:latest
+    container_name: proctor-mongo
+    ports:
+      - "27018:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - proctor-network
+
+networks:
+  proctor-network:
+    driver: bridge
+
+volumes:
+  mongo-data:
