@@ -28,6 +28,8 @@ async def shutdown_db_client():
 
 # Routes
 app.include_router(proctor.router, prefix="/api", tags=["proctor"])
+from app.api import auth
+app.include_router(auth.router, prefix="/api/auth", tags=["auth"])
 
 @app.get("/health")
 async def health_check():

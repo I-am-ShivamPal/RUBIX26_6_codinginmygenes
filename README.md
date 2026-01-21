@@ -1,4 +1,4 @@
-# RUBIX26_6_codinginmygenes
+# Smart-ProctorAI
 
 # AI-Based Smart Examination Proctoring System
 

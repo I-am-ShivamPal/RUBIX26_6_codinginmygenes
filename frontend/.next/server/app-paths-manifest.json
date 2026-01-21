@@ -1,3 +1,9 @@
 {
-  "/exam/page": "app/exam/page.js"
+  "/exam/page": "app/exam/page.js",
+  "/api/admin/violations/route": "app/api/admin/violations/route.js",
+  "/api/admin/stats/route": "app/api/admin/stats/route.js",
+  "/api/admin/sessions/route": "app/api/admin/sessions/route.js",
+  "/admin/violations/page": "app/admin/violations/page.js",
+  "/admin/dashboard/page": "app/admin/dashboard/page.js",
+  "/admin/sessions/page": "app/admin/sessions/page.js"
 }

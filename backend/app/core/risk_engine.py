@@ -28,7 +28,7 @@ class RiskEngine:
 
     def calculate_event_risk(self, event_type: str):
         score = 0.0
-        if event_type == "tab_switch":
+        if event_type in ["tab_switch", "tab_hidden", "window_blur"]:
             score = self.weights["tab_switch"]
         return score
 

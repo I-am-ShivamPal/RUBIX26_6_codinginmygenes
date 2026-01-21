@@ -39,6 +39,11 @@ export const useWebcam = () => {
 
         if (!context) return null;
 
+        // Ensure video is ready and has dimensions
+        if (video.readyState !== video.HAVE_ENOUGH_DATA || video.videoWidth === 0 || video.videoHeight === 0) {
+            return null;
+        }
+
         canvas.width = video.videoWidth;
         canvas.height = video.videoHeight;
         context.drawImage(video, 0, 0, canvas.width, canvas.height);

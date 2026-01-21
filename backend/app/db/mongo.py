@@ -9,7 +9,7 @@ db = MongoDB()
 
 async def connect_db():
     mongo_url = os.getenv("MONGODB_URL", "mongodb://localhost:27017")
-    db_name = os.getenv("DATABASE_NAME", "proctor_db")
+    db_name = os.getenv("DATABASE_NAME", "rubix_db")
     print(f"Connecting to MongoDB at {mongo_url}")
     db.client = AsyncIOMotorClient(mongo_url)
     db.db = db.client[db_name]

@@ -8,3 +8,6 @@ mediapipe==0.10.9
 numpy==1.26.3
 python-dotenv==1.0.1
 pymongo==4.6.1
+passlib[bcrypt]==1.7.4
+python-jose[cryptography]==3.3.0
+pydantic[email]

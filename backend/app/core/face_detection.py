@@ -20,6 +20,10 @@ def decode_image(base64_string: str):
             base64_string = base64_string.split(",")[1]
         decoded_data = base64.b64decode(base64_string)
         np_data = np.frombuffer(decoded_data, np.uint8)
+        
+        if np_data.size == 0:
+            return None
+            
         image = cv2.imdecode(np_data, cv2.IMREAD_COLOR)
         return image
     except Exception as e:
